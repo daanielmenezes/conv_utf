@@ -3,11 +3,10 @@
 
 const int BOM = 0xfeff;
 int utf8_32(FILE *arq_entrada, FILE *arq_saida) {
-    int nBytes, c;
-    unsigned char p; 
+    int nBytes, c, p;
 
     fwrite(&BOM, 4, 1, arq_saida);
-    while( fread(&p, 1, 1, arq_entrada ) ) {
+    while( (p = getc(arq_entrada)) != EOF ) {
         if (!(p & 0x80)) {
             c = p;
         } else{
@@ -16,10 +15,11 @@ int utf8_32(FILE *arq_entrada, FILE *arq_saida) {
             c = (int) ( p & ( 0xffu >> (nBytes+1) ) );
             nBytes--;
             for(; nBytes; nBytes--){
-                fread(&p, 1, 1, arq_entrada );
+                p = fgetc(arq_entrada);
                 c = ( c<<6 ) + ( p & 0x3f );
             }
         }
+        printf("p: %x - c:%x\n", p, c);
         fwrite(&c, 4, 1, arq_saida);
     }
     return 0;
