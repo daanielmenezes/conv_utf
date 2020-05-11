@@ -1,0 +1,5 @@
+utf8_32 e utf32_8 funcionando corretamente.
+
+Integrantes:
+Daniel Menezes C. L. dos Passos 1913037 3WB
+Theo Falcato R. P. de Athayde   1912971 3WB

@@ -19,6 +19,12 @@ int main(void) {
     fclose(input);
     fclose(output);
 
+    input = fopen("test.txt", "rb");
+    output = fopen("testout.txt", "wb");
+    utf8_32(input, output);
+    fclose(input);
+    fclose(output);
+
 /*
     printf("num:%0x, bom: %x, num_conv: %0x\n",
             0x01020304, 0xfeff, bom_to_machine_endianness(0xfeff,0x01020304));
