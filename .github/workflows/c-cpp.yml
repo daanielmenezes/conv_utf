@@ -14,5 +14,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: make
-      run: gcc -o conv conv_utf.c
+      run: gcc -o conv conv_utf.c main.c
 
